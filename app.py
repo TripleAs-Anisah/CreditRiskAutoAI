@@ -19,7 +19,7 @@ def predict():
    
     ####################### FROM AUTOAI DEPLOYMENT API #######################
     # NOTE: you must manually set API_KEY below using information retrieved from your IBM Cloud account.
-    API_KEY = "0m-obVhuKjCWj_44nUqn1y22joJLyThWvDXbkYML-X4a"
+    API_KEY = "ExjwftMASLNIVs418m47zt_tx_2YR1NZ4UxGf_pmBVB0"
     token_response = requests.post('https://iam.cloud.ibm.com/identity/token', data={"apikey":API_KEY, "grant_type": 'urn:ibm:params:oauth:grant-type:apikey'})
     mltoken = token_response.json()["access_token"]
 
@@ -49,8 +49,9 @@ def predict():
                     "ExistingCreditsCount",
                     "Job",
                     "Dependents",
-                    "Telephone",
+                    "Telephone",             
                     "ForeignWorker"],
+                                       
         "values": [[
 
                     None,
@@ -73,12 +74,13 @@ def predict():
                     None,
                     None,
                     None ]]
+      
         }]}
 
-    response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/ml/v4/deployments/3dd133fe-fc54-4621-ad82-706e6d0d3c7b/predictions?version=2022-06-23', json=payload_scoring, 
-        headers={'Authorization': 'Bearer ' + mltoken})
+    response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/ml/v4/deployments/3dd133fe-fc54-4621-ad82-706e6d0d3c7b/predictions?version=2022-06-23', json=payload_scoring,
+     headers={'Authorization': 'Bearer ' + mltoken})
     print("Scoring response")
-    print(response_scoring.json())
+    print(response_scoring.json())))
     ####################### END OF AUTOAI DEPLOYMENT API #######################
 
     return render_template('index.html', prediction_text='Loan Risk Prediction is $ {}'.format(response_scoring.json()))
