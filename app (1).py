@@ -76,8 +76,7 @@ def predict():
                     None ]]
         }]}
 
-    response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/ml/v4/deployments/3dd133fe-fc54-4621-ad82-706e6d0d3c7b/predictions?version=2022-06-23', json=payload_scoring,
-    headers={'Authorization': 'Bearer ' + mltoken})
+    response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/ml/v4/deployments/3dd133fe-fc54-4621-ad82-706e6d0d3c7b/predictions?version=2022-06-23', json=payload_scoring, headers={'Authorization': 'Bearer ' + mltoken})
     print("Scoring response")
     print(response_scoring.json())
     ####################### END OF AUTOAI DEPLOYMENT API #######################
